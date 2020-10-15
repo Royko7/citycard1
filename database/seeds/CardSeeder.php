@@ -15,12 +15,12 @@ class CardSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cards')->insert([
-            'user_id' => rand(1,5),
-            'balance' => rand(4,13434),
-            'number' => rand(10,1323434),
-            'created_at' => '2020-02-22 17:50:00',
-            'updated_at' => '2020-08-29 18:55:37',
-        ]);
+//        DB::table('cards')->insert([
+//            'user_id' => rand(1,5),
+//            'balance' => rand(4,13434),
+//            'number' => rand(10,1323434),
+//            'created_at' => '2020-02-22 17:50:00',
+//            'updated_at' => '2020-08-29 18:55:37',
+//        ]);
     }
 }

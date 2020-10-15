@@ -16,10 +16,6 @@ class CreateHistoryTravel extends Migration
         Schema::create('history_travel', function (Blueprint $table) {
             $table->id();
             $table->integer('card_id');
-            $table->string('route_name');
-            $table->string('route_num');
-            $table->string('transport_name');
-            $table->integer('price');
             $table->timestamps();
         });
     }

@@ -16,9 +16,7 @@ class CreateTransport extends Migration
         Schema::create('transport', function (Blueprint $table) {
             $table->id();
             $table->string('transport_name');
-            $table->string('transport_type');
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('city_route');
         });
     }
 

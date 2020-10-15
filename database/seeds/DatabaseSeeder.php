@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(UserSeeder::class);
-        $this->call(CardSeeder::class);
-        $this->call(HistorySeeder::class);
+//        $this->call(CardSeeder::class);
+//        $this->call(HistorySeeder::class);
     }
 }

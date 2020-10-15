@@ -17,7 +17,7 @@ class CreateCardsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('balance')->default('0');
-            $table->integer('number');
+            $table->string('number');
             $table->timestamps();
         });
     }

@@ -26,11 +26,12 @@ Route::get('/admin', 'AdminController@index')->middleware('admin')->name('admin'
 Route::get('profile', function () {
 })->middleware('verified');
 
-Route::resource('routes','RoutesController')->middleware('admin');
+//Route::resource('routes','RoutesController')->middleware('admin');
 
 Route::post('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 //Route::get('/home','EloquentController@Home');
+Route::resource('region','RegionController')->middleware('admin');
 
 Route::get('/home', 'HomeController@index')->middleware('user')->name('home');
 Route::resource( 'cabinet','CabinetController')->middleware('user');
