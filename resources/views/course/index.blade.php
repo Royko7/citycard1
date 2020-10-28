@@ -4,8 +4,8 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark mr-4" href="/">Головна</a>
         <a class="p-2 text-dark" href="{{url('/admin')}}"> Admin</a>
-        {{--        <a class="p-2 text-dark" href="{{route('region.index')}}"> Області</a>--}}
-
+        <a class="p-2 text-dark" href="{{route('region.index')}}"> Область</a>
+        <a class="p-2 text-dark" href="{{route('city.index')}}"> Місто</a>
     </nav>
     <span class="btn btn-outline-primary mr-2>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -28,10 +28,13 @@
 <div class="container">
     <div class="row">
         <div class="col-5">
-            <a class="btn btn-success" href="{{route('city.create')}}"> Створити місто</a>
+            <a class="btn btn-success" href="{{route('course.create')}}"> Створити маршрут</a>
         </div>
         <div class="col-5">
             <a class="btn btn-info" href="{{route('region.index')}}"> Області</a>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-warning" href="{{route('city.index')}}"> Міста</a>
         </div>
         <hr>
     </div>
@@ -42,25 +45,25 @@
         <tr>
 
             <th scope="col">№</th>
-            @foreach( $city as $cityes)
+            @foreach( $course as $courses)
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th scope="row">{{$cityes->id}}</th>
-            <td>{{$cityes->city_name}}</td>
+            <th scope="row">{{$courses->id}}</th>
+            <td>{{$courses->start_course}}--{{$courses->end_course}}</td>
             <td>
-                <a type="button" class="btn btn-primary" href="{{route('region.edit',$cityes)}}
-                    ">Оновити Місто</a></td>
+                <a type="button" class="btn btn-primary" href="{{route('course.edit',$courses)}}
+                    ">Оновити маршрут</a></td>
 
-            <td><a class="btn btn-secondary" href="{{route('city.show',$cityes->id)}}">Переглянути</a></td>
-{{--            <td><a class="btn btn-secondary" href="{{route('region.show',$cityes->region_id)}}">Переглянути</a></td>--}}
+            <td><a class="btn btn-secondary" href="{{route('course.show',$courses)}}">Переглянути</a></td>
+{{--            <td><a class="btn btn-secondary" href="{{route('region.show',$course->city_id)}}">Переглянути</a></td>--}}
 
             <td>
-                <form action="{{ route('city.destroy', $cityes->id)}}" method="post">
+                <form action="{{ route('course.destroy', $courses->id)}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Видалити Область</button>
+                    <button class="btn btn-danger" type="submit">Видалити маршрут</button>
                 </form>
 
             </td>

@@ -15,6 +15,9 @@ class CreateStopsTable extends Migration
     {
         Schema::create('stops', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('course_id')->unsigned();
+            $table->foreign('course_id')->references('id')->on('city_course')->onDelete('cascade');
+            $table->string('stops_name');
             $table->timestamps();
         });
     }
@@ -26,6 +29,9 @@ class CreateStopsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('stops');
+        Schema::enableForeignKeyConstraints();
+
     }
 }

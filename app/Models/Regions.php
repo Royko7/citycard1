@@ -6,22 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Regions extends Model
 {
-    protected $table = 'region';
+    protected $table = 'regions';
     protected $fillable = [
         'region_name',
     ];
 
+    /**
+     * @var mixed
+     */
+
     public function cities()
     {
-        return $this->belongsToMany('App\Models\City');
+        return $this->hasMany('App\Models\City', 'region_id');
     }
 
 //    public function getCity()
 //    {
-//        if ($this->city !==null){
-//            return $this->city->city_name;
-//        }
-//        else return 'Не вказано';
+//        $city = $this->cities->all();
+////        $city= $city->cities;
+////        foreach ($city as $cities){
+//            return $this->cities;
+////        }
 //    }
-
 }

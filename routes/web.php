@@ -27,12 +27,14 @@ Route::get('profile', function () {
 })->middleware('verified');
 
 //Route::resource('routes','RoutesController')->middleware('admin');
-
 Route::post('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 //Route::get('/home','EloquentController@Home');
 Route::resource('region','RegionController')->middleware('admin');
-
+Route::resource('city','CityController')->middleware('admin');
+Route::resource('course','CourseController')->middleware('admin');
+Route::resource('stop','StopController')->middleware('admin');
+//Route::post('city/create','RegionController@city')->name('region.city');
 Route::get('/home', 'HomeController@index')->middleware('user')->name('home');
 Route::resource( 'cabinet','CabinetController')->middleware('user');
 //Auth::logout();

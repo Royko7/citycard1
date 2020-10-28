@@ -28,6 +28,8 @@
         <a class="p-2 text-dark mr-4" href="/">Головна</a>
 {{--        <a class="p-2 text-dark" href="{{route('routes.index')}}"> Блог</a>--}}
         <a class="p-2 text-dark" href="{{route('region.index')}}"> Область</a>
+        <a class="p-2 text-dark" href="{{route('city.index')}}"> Місто</a>
+        <a class="p-2 text-dark" href="{{route('course.index')}}"> Маршрут</a>
 {{--        <a class="p-2 text-dark" href="{{route('routes.index')}}"> Створити маршут</a>--}}
 
     </nav>

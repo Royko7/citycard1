@@ -4,7 +4,6 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark mr-4" href="/">Головна</a>
         <a class="p-2 text-dark" href="{{url('/admin')}}"> Admin</a>
-
     </nav>
     <span class="btn btn-outline-primary mr-2>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -23,14 +22,21 @@
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
-    </div><br />
+    </div><br/>
 @endif
 <div class="container">
-    <form method="post" action="{{ route('city.update',$city->id) }}">
+    <form method="post" action="{{ route('course.update',$course->id) }}">
         @method('PATCH')
         @csrf
-        <input class="form-control" type="text" value="{{$city->city_name}}" name="city_name" placeholder="Назва" >
+        <div class="col-4">
+            <input class="form-control" type="text" name="start_course" placeholder="Початок маршруту">
+        </div>
         <br>
-        <button type="submit" class="btn btn-primary">Оновити</button>
+        <div class="col-4">
+            <input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">
+            <br>
+            <button type="submit" class="btn btn-primary">Оновити</button>
+        </div>
+        <br>
     </form>
 </div>

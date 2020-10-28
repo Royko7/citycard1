@@ -45,29 +45,29 @@
         <tr>
 
             <th scope="col">№</th>
-            @foreach( $course as $courses)
+{{--            @foreach( $course as $courses)--}}
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th scope="row">{{$courses->id}}</th>
-            <td>{{$courses->start_course}}--{{$courses->end_course}}</td>
+{{--            <th scope="row">{{$courses->id}}</th>--}}
+{{--            <td>{{$courses->start_course}}--{{$courses->end_course}}</td>--}}
             <td>
-                <a type="button" class="btn btn-primary" href="{{route('course.edit',$courses)}}
+{{--                <a type="button" class="btn btn-primary" href="{{route('course.edit',$courses)}}--}}
                     ">Оновити маршрут</a></td>
 
-            <td><a class="btn btn-secondary" href="{{route('course.show',$courses)}}">Переглянути</a></td>
+{{--            <td><a class="btn btn-secondary" href="{{route('course.show',$courses)}}">Переглянути</a></td>--}}
 {{--            <td><a class="btn btn-secondary" href="{{route('region.show',$course->city_id)}}">Переглянути</a></td>--}}
 
             <td>
-                <form action="{{ route('course.destroy', $courses->id)}}" method="post">
+{{--                <form action="{{ route('course.destroy', $courses->id)}}" method="post">--}}
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Видалити маршрут</button>
-                </form>
+{{--                </form>--}}
 
             </td>
-            @endforeach
+{{--            @endforeach--}}
 
         </tr>
 

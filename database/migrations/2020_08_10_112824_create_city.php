@@ -16,6 +16,7 @@ class CreateCity extends Migration
         Schema::create('city', function (Blueprint $table) {
             $table->id();
             $table->string('city_name');
+            $table->integer('region_id');
             $table->timestamps();
         });
     }

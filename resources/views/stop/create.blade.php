@@ -26,26 +26,34 @@
     </div><br/>
 @endif
 <div class="container">
-    <h2>Створити маршрут</h2>
+    <h2>Створити зупинку</h2>
     <br>
-    <form method="post" action="{{route('course.store')}}">
+    @foreach($stop as $stops)
+    @endforeach
+{{--    {{dd($stops->courses->all())}}--}}
+{{--{{dd($stop)}}--}}
+    <form method="post" action="{{route('stop.store')}}">
         @csrf
-        <select class="custom-select" name="city_id" id="inputGroupSelect01">
-            @foreach($city = \App\Models\City::all() as $cities)
-                <option name="city_id" value="{{$cities->id}}">
-                    {{$cities->city_name}}
+{{--        @endforeach--}}
+{{--                {{dd($stops->courses->start_course/)}}--}}
+        <select class="custom-select" name="course_id" id="inputGroupSelect01">
+
+                        @foreach($stops->courses->all() as $stopes )
+            <option name="course_id" value="{{$stopes->id}}">
+                                    {{$stopes->start_course}}-{{$stopes->end_course}}
                 </option>
             @endforeach
+
         </select>
         <div class="row">
             <div class="col-4">
-                <br><input class="form-control" type="text" name="start_course" placeholder="Початок маршруту">
+                <br><input class="form-control" type="text" name="stops_name" placeholder="Назва зупинки">
             </div>
             <br>
             <br>
             <div class="col-4">
 
-                <br><input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">
+{{--                <br><input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">--}}
             </div>
             <br>
             <br>

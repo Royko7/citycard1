@@ -26,35 +26,31 @@
     </div><br/>
 @endif
 <div class="container">
+    <h2>Створити маршрут</h2>
     <br>
-    <form method="post" action="{{route('city.store')}}">
-
-        <br>
-        <br>
-        <br>
+    <form method="post" action="{{route('course.store')}}">
         @csrf
-
-        <input class="form-control" type="text" name="city_name" placeholder="Назва міста">
-
-        <br>
-{{--        @foreach($region = \App\Models\Regions::all() as $regions)--}}
-
-        <select class="custom-select" name="region_id" id="inputGroupSelect01">
-
-            @foreach($region = \App\Models\Regions::all() as $regions)
-{{--            <option >...</option>--}}
-                <option name="region_id" value="{{$regions->id}}">
-                    {{$regions->region_name}}
+        <select class="custom-select" name="city_id" id="inputGroupSelect01">
+            @foreach($city = \App\Models\City::all() as $cities)
+                <option name="city_id" value="{{$cities->id}}">
+                    {{$cities->city_name}}
                 </option>
-
             @endforeach
         </select>
-{{--            <input class="form-control" type="hidden" name="region_id" value="{{$regions->id }}">--}}
+        <div class="row">
+            <div class="col-4">
+                <br><input class="form-control" type="text" name="start_course" placeholder="Початок маршруту">
+            </div>
+            <br>
+            <br>
+            <div class="col-4">
+
+                <br><input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">
+            </div>
+            <br>
+            <br>
+        </div>
         <br>
-        <br>
-        <br>
-            <button type="submit" class="btn btn-primary">Створити</button>
+        <button type="submit" class="btn btn-primary">Створити</button>
     </form>
-
-
 </div>
