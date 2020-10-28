@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegion extends Migration
+class CreateStopsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateRegion extends Migration
      */
     public function up()
     {
-        Schema::create('region', function (Blueprint $table) {
+        Schema::create('stops', function (Blueprint $table) {
             $table->id();
-            $table->string('region_name');
             $table->timestamps();
-
         });
     }
 
@@ -28,6 +26,6 @@ class CreateRegion extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('region');
+        Schema::dropIfExists('stops');
     }
 }
