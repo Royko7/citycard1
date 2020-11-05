@@ -4,8 +4,6 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark mr-4" href="/">Головна</a>
         <a class="p-2 text-dark" href="{{url('/admin')}}"> Admin</a>
-        <a class="p-2 text-dark" href="{{url('/routes')}}"> Crud</a>
-
     </nav>
     <span class="btn btn-outline-primary mr-2>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -17,13 +15,29 @@
         {{ csrf_field() }}
     </form>
 </div>
-
-<div class="card mx-auto" style="width: 18rem;">
-    <div class="card-header">
-       Місто  |<b> {{$routes->city}}</b>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Тип квитка | <b>{{$routes->ticket_type}}</b> </li>
-        <li class="list-group-item">Тип  транспорту  | <b>{{$routes->transport_type}}</b></li>
-    </ul>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div><br/>
+@endif
+<div class="container">
+    <h2>Введіть назву зупики</h2>
+    <br>
+    <form method="post" action="{{ route('stop.update',$stop->id) }}">
+        @method('PATCH')
+        @csrf
+        <div class="col-4">
+            <input class="form-control" type="text" name="stops_name" placeholder="Назва зупинки">
+        </div>
+        <br>
+        <div class="col-4">
+            <br>
+            <button type="submit" class="btn btn-primary">Оновити</button>
+        </div>
+        <br>
+    </form>
 </div>

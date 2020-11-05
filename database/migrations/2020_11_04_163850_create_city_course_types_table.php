@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTicket extends Migration
+class CreateCityCourseTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateTicket extends Migration
      */
     public function up()
     {
-        Schema::create('ticket', function (Blueprint $table) {
+        Schema::create('city_course_types', function (Blueprint $table) {
             $table->id();
-            $table->string('ticket_type')->default('Міський');
-            $table->string('ticket_price')->default('7');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateTicket extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ticket');
+        Schema::dropIfExists('city_course_types');
     }
 }
