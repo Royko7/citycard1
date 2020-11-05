@@ -29,18 +29,18 @@
 
     <div class="row">
         <div class="col-3">
-            @foreach($city = \App\Models\City::all() as $cities)
-            @endforeach
-            @foreach($region = \App\Models\Regions::all() as $regions)
-            @endforeach
+{{--            @foreach($city = \App\Models\City::all() as $cities)--}}
+{{--            @endforeach--}}
+{{--            @foreach($region = \App\Models\Regions::all() as $regions)--}}
+{{--            @endforeach--}}
             <a class="btn btn-secondary" href="{{route('course.index' )}}"> << до списоку</a>
-            <a class="btn btn-warning" href="{{route('city.show',$course->cities)}}"> до міста</a>
+{{--            <a class="btn btn-warning" href="{{route('city.show',$course->cities)}}"> до міста</a>--}}
         </div>
 {{--        <h2>{{$cities->city_name}} - маршрути</h2>--}}
         <div class="col-3">
-            <a class="btn btn-success" href="{{route('course.edit',$course)}}"> Редагувати маршрут</a>
+{{--            <a class="btn btn-success" href="{{route('course.edit',$course)}}"> Редагувати маршрут</a>--}}
         </div>
-        <h2>{{$course->cities->city_name}}</h2>
+{{--        <h2>{{$course->cities->city_name}}</h2>--}}
     </div>
 {{--    {{dd($course)}}--}}
     <table class="table table-bordered">
@@ -58,7 +58,7 @@
             </thead>
             <tbody>
             @foreach($course = \App\Models\Course::all() as $courses)
-                @if($cities->id == $courses->city_id)
+{{--                @if($cities->id == $courses->city_id)--}}
                     <tr>
                         {{--                {{$cities->id}}--}}
                         <th scope="row">
@@ -105,7 +105,7 @@
                         </th>
                         <td>
                             {{$courses->end_course}}
-                            @endif
+{{--                            @endif--}}
 {{--                            <a type="button" class="btn btn-primary" href="{{route('course.edit',$courses->id)}}--}}
 {{--                                ">Оновити маршрут</a>--}}
                         </td>

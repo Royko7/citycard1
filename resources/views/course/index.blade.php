@@ -6,6 +6,8 @@
         <a class="p-2 text-dark" href="{{url('/admin')}}"> Admin</a>
         <a class="p-2 text-dark" href="{{route('region.index')}}"> Область</a>
         <a class="p-2 text-dark" href="{{route('city.index')}}"> Місто</a>
+        <a class="p-2 text-dark" href="{{route('transport.index')}}"> Транспорт</a>
+
     </nav>
     <span class="btn btn-outline-primary mr-2>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -51,7 +53,8 @@
         <tbody>
         <tr>
             <th scope="row">{{$courses->id}}</th>
-            <td>{{$courses->start_course}}--{{$courses->end_course}}</td>
+            <td>{{$courses->title}}</td>
+{{--            <td>{{$courses->start_course}}--{{$courses->end_course}}</td>--}}
             <td>
                 <a type="button" class="btn btn-primary" href="{{route('course.edit',$courses)}}
                     ">Оновити маршрут</a></td>

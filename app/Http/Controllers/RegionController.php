@@ -91,7 +91,7 @@ class RegionController extends Controller
         $region = Regions::findOrFail($id);
         $region->region_name = $request->get('region_name');
         $region->save();
-        return redirect('region/')->with('success', 'Назву оновлено!');
+        return redirect()->roure('region.index')->with('success', 'Назву оновлено!');
 
     }
 
@@ -105,7 +105,7 @@ class RegionController extends Controller
     {
         $region = Regions::findOrFail($id);
         $region->delete();
-        return redirect('region/')->with('success', 'Область видалено!');
+        return redirect()->route('region.index')->with('success', 'Область видалено!');
 
     }
 }

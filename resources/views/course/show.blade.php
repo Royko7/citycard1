@@ -59,11 +59,7 @@
             <tbody>
             @foreach($course as $courses)
             @endforeach
-
-            {{--                @if($cities->id == $courses->city_id)--}}
                     <tr>
-{{--                        {{dd($course->id)}}--}}
-                        {{--                {{$cities->id}}--}}
                         <th scope="row">
                             {{$course->id}}
                         </th>
@@ -73,15 +69,11 @@
                         <th scope="row">
 
                             @foreach($course->stops as $course_stops)
-                            <a href="#">{{$course_stops->stops_name}}
-                            </a> -
-                                <hr>
-{{--                            <br>--}}
-
+                            <b>{{$course_stops->stops_name}} </b>
+                                <br>
                             @endforeach
-{{--                {{dd($course_stops)}}--}}
-                            <div class="row">
 
+                            <div class="row">
                             </div>
                             <br>
                             <a class="btn btn-primary" href="{{route('stop.create')}}">Додати зупинку</a>

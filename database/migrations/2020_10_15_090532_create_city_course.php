@@ -15,9 +15,11 @@ class CreateCityCourse extends Migration
     {
         Schema::create('city_course', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('start_course');
             $table->string('end_course');
-            ;$table->integer('city_id');
+            $table->integer('city_id');
+            $table->integer('type_id');
             $table->timestamps();
         });
     }

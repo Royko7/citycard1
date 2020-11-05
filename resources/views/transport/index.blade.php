@@ -28,10 +28,10 @@
 <div class="container">
     <div class="row">
         <div class="col-5">
-            <a class="btn btn-success" href="{{route('stop.create')}}"> Створити зупинку</a>
+            <a class="btn btn-success" href="{{route('transport.create')}}"> Створити транспорт</a>
         </div>
         <div class="col-5">
-            <a class="btn btn-info" href="{{route('region.index')}}"> Області</a>
+            <a class="btn btn-info" href="{{route('course.index')}}"> Маршрути</a>
         </div>
         <div class="col-2">
             <a class="btn btn-warning" href="{{route('city.index')}}"> Міста</a>
@@ -45,27 +45,29 @@
         <tr>
 
             <th scope="col">№</th>
-            <th scope="col">Назва зупинки</th>
-            <th scope="col">Початок маршруту</th>
-            <th scope="col">Кінцева зупинка</th>
-            @foreach( $stop as $stops)
+            <th scope="col">Назва транспорту</th>
+            <th scope="col">Назва маршруту</th>
+            <th scope="col">Тип транспорту</th>
+            @foreach( $transport as $transports)
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th scope="row">{{$stops->id}}</th>
-            <td>{{$stops->stops_name}}</td>
-            <td>{{$stops->courses->start_course}}</td>
-            <td>{{$stops->courses->end_course}}</td>
-            <td>
-                <a type="button" class="btn btn-primary" href="{{route('stop.edit',$stops)}}
-                    ">Оновити зупинку</a></td>
-
-{{--            <td><a class="btn btn-secondary" href="{{route('course.show',$courses)}}">Переглянути</a></td>--}}
-{{--            <td><a class="btn btn-secondary" href="{{route('region.show',$course->city_id)}}">Переглянути</a></td>--}}
+            <th scope="row"> {{$transports->id ?? ''}}
+            </th>
+            <td>{{$transports->transport_name ?? ''}}</td>
+            <td>{{$transports->courses->title ?? ''}}</td>
+            <td>{{$transports->transport_type ?? ''}}</td>
 
             <td>
-                <form action="{{ route('stop.destroy', $stops->id)}}" method="post">
+                <a type="button" class="btn btn-primary" href="{{route('transport.edit',$transports)}}
+                    ">Оновити транспорт</a></td>
+            {{----}}
+            {{--            <td><a class="btn btn-secondary" href="{{route('transport.show',$transports)}}">Переглянути</a></td>--}}
+            {{--            <td><a class="btn btn-secondary" href="{{route('region.show',$course->city_id)}}">Переглянути</a></td>--}}
+
+            <td>
+                <form action="{{ route('transport.destroy', $transports->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Видалити маршрут</button>
@@ -75,10 +77,9 @@
             @endforeach
 
         </tr>
-
+{{--        {{dd($transports->city->id)}}--}}
 
         </tbody>
     </table>
 
 </div>
-

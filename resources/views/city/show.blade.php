@@ -66,21 +66,17 @@
                     </th>
                     <th scope="row">
                         @foreach($course->stops as $course_stop)
-                        <a href="#">{{$course_stop->stops_name}}</a>-
+                        <b>{{$course_stop->stops_name}}</b>
                         <br>
                         @endforeach
                         <div class="row">
                         </div>
                         <br>
-                        <a class="btn btn-primary" href="">Додати зупинку</a>
+                        <br>
+                        <a class="btn btn-primary" href="{{route('stop.create')}}">Додати зупинку</a>
                     </th>
                     <td>
                         {{$course->end_course}}
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
                         <br>
                         <a type="button" class="btn btn-primary" href="{{route('course.edit',$course->id)}}
                             ">Оновити маршрут</a>

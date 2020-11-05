@@ -37,6 +37,9 @@
                 </option>
             @endforeach
         </select>
+        <br>
+        <br>
+        <input class="form-control" type="text" name="title" placeholder="Назва маршруту">
         <div class="row">
             <div class="col-4">
                 <br><input class="form-control" type="text" name="start_course" placeholder="Початок маршруту">
@@ -44,12 +47,38 @@
             <br>
             <br>
             <div class="col-4">
-
                 <br><input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">
             </div>
+            <div class="col-4">
+                <br>
+                <select class="custom-select" name="type_id" id="inputGroupSelect01">
+                    @foreach($course_type = App\Models\CityCourseType::all() as $types)
+                        <option name="type_id" value="{{$types->id}}">
+                            {{$types->course_type}}
+
+
+                        </option>
+                    @endforeach
+
+                </select>
+                <h5>     Тип маршруту</h5>
+{{--                {{dd($course_type)}}--}}
+
+                {{--                {{dd($types)}}--}}
+{{--                {{dd($types)}}--}}
+            </div>
+{{--            @foreach($courses->courseType() as $course_type)--}}
+{{--            @endforeach--}}
+{{--            {{dd($types)}}--}}
+{{--            {{dd($courses->getCourse())}}--}}
             <br>
+{{--            {{dd($course_type->courseType())}}--}}
+{{--            {{dd($courses->courseType)}}--}}
+{{--            {{dd($course_type)}}--}}
+
             <br>
         </div>
+
         <br>
         <button type="submit" class="btn btn-primary">Створити</button>
     </form>

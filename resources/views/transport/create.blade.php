@@ -25,38 +25,43 @@
         </ul>
     </div><br/>
 @endif
-<div class="container">
-    <h2>Створити зупинку</h2>
-    <br>
-    @foreach($stop as $stops)
-    @endforeach
-{{--    {{dd($stops->courses->all())}}--}}
-{{--{{dd($stop)}}--}}
-    <form method="post" action="{{route('stop.store')}}">
-        @csrf
-{{--        @endforeach--}}
-{{--                {{dd($stops->courses->start_course/)}}--}}
-        <select class="custom-select" name="course_id" id="inputGroupSelect01">
 
-                        @foreach($stops->courses->all() as $stopes )
-            <option name="course_id" value="{{$stopes->id}}">
-                                    {{$stopes->start_course}}-{{$stopes->end_course}}
-                </option>
+
+{{--{{dd($transport)}}--}}
+<div class="container">
+    <h2>Створити транспорт</h2>
+    <br>
+    {{--    @foreach($stop as $stops)--}}
+    {{--    @endforeach--}}
+    {{--    @foreach( $transport as $transports)--}}
+    {{--    @endforeach--}}
+
+    <form method="post" action="{{route('transport.store')}}">
+        @csrf
+        {{--        @endforeach--}}
+        {{--                        {{dd($transports->courses->id)}}--}}
+        {{--<h2>{{$transports->courses->all()}}</h2>--}}
+
+        <select class="custom-select" name="course_id" id="inputGroupSelect01">
+            @foreach($transport as $transports)
             @endforeach
+
+                        @foreach($transports->courses->all()  as $course)
+                <option name="course_id" value="{{$course->id}}">
+{{--                    {{($transports->courses->title)}}--}}
+                    {{$course->title}}
+
+                </option>
+                @endforeach
 
         </select>
         <div class="row">
             <div class="col-4">
-                <br><input class="form-control" type="text" name="stops_name" placeholder="Назва зупинки">
+                <br><input class="form-control" type="text" name="transport_name" placeholder="Назва транспорту">
+                <br><input class="form-control" type="text" name="transport_type" placeholder="Тип транспорту">
             </div>
-            <br>
-            <br>
             <div class="col-4">
-
-{{--                <br><input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">--}}
             </div>
-            <br>
-            <br>
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Створити</button>

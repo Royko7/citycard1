@@ -4,7 +4,6 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark mr-4" href="/">Головна</a>
         <a class="p-2 text-dark" href="{{url('/admin')}}"> Admin</a>
-
     </nav>
     <span class="btn btn-outline-primary mr-2>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -28,22 +27,22 @@
 <div class="container">
     <h2>Створити зупинку</h2>
     <br>
-    @foreach($stop as $stops)
+    @foreach($stop  as $stops )
     @endforeach
-{{--    {{dd($stops->courses->all())}}--}}
-{{--{{dd($stop)}}--}}
+
+{{--@if($stops->isEmpty())--}}
+{{--    <h1>2</h1>--}}
+{{--    @endif--}}
+{{--    {{dd($stops->courses->all()  )}}--}}
+
     <form method="post" action="{{route('stop.store')}}">
         @csrf
-{{--        @endforeach--}}
-{{--                {{dd($stops->courses->start_course/)}}--}}
         <select class="custom-select" name="course_id" id="inputGroupSelect01">
-
-                        @foreach($stops->courses->all() as $stopes )
-            <option name="course_id" value="{{$stopes->id}}">
-                                    {{$stopes->start_course}}-{{$stopes->end_course}}
+            @foreach($stops->courses->all() as $stopes )
+                <option name="course_id" value="{{$stopes->id}}">
+                    {{$stopes->start_course}}-{{$stopes->end_course}}
                 </option>
             @endforeach
-
         </select>
         <div class="row">
             <div class="col-4">
@@ -52,8 +51,6 @@
             <br>
             <br>
             <div class="col-4">
-
-{{--                <br><input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">--}}
             </div>
             <br>
             <br>

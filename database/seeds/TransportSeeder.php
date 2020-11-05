@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class TrasportSeeder extends Seeder
+class TransportSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +13,9 @@ class TrasportSeeder extends Seeder
     public function run()
     {
         DB::table('transports')->insert([
-            'transports_name' => 'Автобув 1',
+            'transport_name' => 'Автобув 1',
             'transport_type' => 'автобус',
-            'course_id' => '1'
+            'course_id' => 1
         ]);
     }
 }

@@ -15,7 +15,7 @@ class StopController extends Controller
     public function index()
     {
         $stop = Stop::all();
-        return view('stop.index');
+        return view('stop.index',compact('stop'));
     }
 
     /**
@@ -33,7 +33,7 @@ class StopController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -46,7 +46,7 @@ class StopController extends Controller
             'course_id' => $request->get('course_id')
         ]);
         $stop->save();
-        return redirect('stop/')->with('success','Зупинку додано!');
+        return redirect()->route('stop.index')->with('success','Зупинку додано!');
     }
 
     /**
@@ -66,9 +66,10 @@ class StopController extends Controller
      * @param \App\Stop $stop
      * @return \Illuminate\Http\Response
      */
-    public function edit(Stop $stop)
+    public function edit($id)
     {
-        //
+        $stop = Stop::findOrFail($id);
+        return view('stop.edit',compact('stop'));
     }
 
     /**
@@ -76,21 +77,34 @@ class StopController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Stop $stop
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Stop $stop)
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'stops_name' => 'required',
+        ]);
+        $stop = Stop::findOrFail($id);
+        $stop->stops_name = $request->get('stops_name');
+        $stop->save();
+        return redirect()->route('stop.index')->with('success', 'Назву оновлено!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param \App\Stop $stop
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Stop $stop)
+    public function destroy($id)
     {
-        //
+        $stop = Stop::find($id);
+        $stop->delete();
+        return redirect()->route('stop.index')->with('error','Маршрут видалено!');
+
+    }
+
+    public function getTrans(){
+
     }
 }

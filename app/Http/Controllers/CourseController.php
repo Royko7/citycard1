@@ -15,6 +15,10 @@ class CourseController extends Controller
     public function index()
     {
         $course = Course::all();
+//        foreach ($course as $courses)
+//        {
+//            dd($courses->courseType);
+//        }
         return view('course.index', compact('course'));
     }
 
@@ -25,7 +29,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('course.create');
+        $course = Course::all();
+        return view('course.create',compact('course'));
     }
 
     /**
@@ -39,13 +44,18 @@ class CourseController extends Controller
         $request->validate([
             'start_course' => 'required',
             'end_course' => 'required',
+            'title' => 'required',
         ]);
         $course = new Course([
+            'title' => $request->get('title'),
             'start_course' => $request->get('start_course'),
             'end_course' => $request->get('end_course'),
             'city_id' => $request->get('city_id'),
+            'type_id' => $request->get('type_id'),
         ]);
         $course->save();
+//        $course = Course::create($request->all());
+
         return redirect('course/')->with('success', 'Маршрут створено!');
 
     }

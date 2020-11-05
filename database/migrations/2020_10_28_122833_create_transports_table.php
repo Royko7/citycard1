@@ -15,6 +15,10 @@ class CreateTransportsTable extends Migration
     {
         Schema::create('transports', function (Blueprint $table) {
             $table->id();
+            $table->string('transport_name');
+            $table->string('transport_type');
+            $table->bigInteger('course_id')->unsigned();
+            $table->foreign('course_id')->references('id')->on('city_course')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +30,8 @@ class CreateTransportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transports');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('transport');
+        Schema::enableForeignKeyConstraints();
     }
 }

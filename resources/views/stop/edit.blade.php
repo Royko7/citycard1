@@ -25,15 +25,16 @@
     </div><br/>
 @endif
 <div class="container">
-    <form method="post" action="{{ route('course.update',$course->id) }}">
+    <h2>Введіть назву зупики</h2>
+    <br>
+    <form method="post" action="{{ route('stop.update',$stop->id) }}">
         @method('PATCH')
         @csrf
         <div class="col-4">
-            <input class="form-control" type="text" name="start_course" placeholder="Початок маршруту">
+            <input class="form-control" type="text" name="stops_name" placeholder="Назва зупинки">
         </div>
         <br>
         <div class="col-4">
-            <input class="form-control" type="text" name="end_course" placeholder="Кінцева точка">
             <br>
             <button type="submit" class="btn btn-primary">Оновити</button>
         </div>

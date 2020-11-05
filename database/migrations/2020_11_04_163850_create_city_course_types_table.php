@@ -15,6 +15,7 @@ class CreateCityCourseTypesTable extends Migration
     {
         Schema::create('city_course_types', function (Blueprint $table) {
             $table->id();
+            $table->string('course_type');
             $table->timestamps();
         });
     }
