@@ -27,11 +27,16 @@ class Course extends Model
 
     public function transports()
     {
-        return  $this->hasMany('App\Models\Transport', 'course_id');
+        return $this->hasMany('App\Models\Transport', 'course_id');
     }
 
     public function courseType()
     {
-        return $this->hasOne('App\Models\CityCourseType','type_id');
+        return $this->belongsTo('App\Models\CityCourseType', 'type_id');
     }
+
+
+
+
 }
+

@@ -7,6 +7,7 @@
         <a class="p-2 text-dark" href="{{route('region.index')}}"> Область</a>
         <a class="p-2 text-dark" href="{{route('city.index')}}"> Місто</a>
         <a class="p-2 text-dark" href="{{route('transport.index')}}"> Транспорт</a>
+        <a class="p-2 text-dark" href="{{route('ticket.index')}}"> Білет</a>
 
     </nav>
     <span class="btn btn-outline-primary mr-2>
@@ -28,8 +29,10 @@
     @endif
 </div>
 <div class="container">
+
     <div class="row">
         <div class="col-5">
+
             <a class="btn btn-success" href="{{route('course.create')}}"> Створити маршрут</a>
         </div>
         <div class="col-5">
@@ -39,14 +42,19 @@
             <a class="btn btn-warning" href="{{route('city.index')}}"> Міста</a>
         </div>
         <hr>
-    </div>
 
+    </div>
     <hr>
+    <h2>Маршрути</h2>
+
     <table class="table table-dark">
         <thead>
         <tr>
 
             <th scope="col">№</th>
+            <th scope="col">Назва маршруту</th>
+            <th scope="col">Тип маршруту</th>
+{{--            <th scope="col">Ціна</th>--}}
             @foreach( $course as $courses)
         </tr>
         </thead>
@@ -54,7 +62,10 @@
         <tr>
             <th scope="row">{{$courses->id}}</th>
             <td>{{$courses->title}}</td>
-{{--            <td>{{$courses->start_course}}--{{$courses->end_course}}</td>--}}
+            <td>{{$courses->courseType->course_type}}</td>
+            <td></td>
+
+            {{--            <td>{{$courses->start_course}}--{{$courses->end_course}}</td>--}}
             <td>
                 <a type="button" class="btn btn-primary" href="{{route('course.edit',$courses)}}
                     ">Оновити маршрут</a></td>

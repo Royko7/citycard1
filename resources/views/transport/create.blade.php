@@ -35,30 +35,42 @@
     {{--    @endforeach--}}
     {{--    @foreach( $transport as $transports)--}}
     {{--    @endforeach--}}
+    {{--    @foreach($transport as $transports)--}}
 
+    {{--                    @endforeach--}}
+    {{--    <h2> {{dd($transports->courses->id)}}</h2>--}}
+
+    {{--@foreach()--}}
     <form method="post" action="{{route('transport.store')}}">
         @csrf
-        {{--        @endforeach--}}
-        {{--                        {{dd($transports->courses->id)}}--}}
-        {{--<h2>{{$transports->courses->all()}}</h2>--}}
-
         <select class="custom-select" name="course_id" id="inputGroupSelect01">
             @foreach($transport as $transports)
             @endforeach
-
-                        @foreach($transports->courses->all()  as $course)
-                <option name="course_id" value="{{$course->id}}">
-{{--                    {{($transports->courses->title)}}--}}
-                    {{$course->title}}
+            @foreach($transports->courses->all() as $tr)
+                <option name="course_id" value="{{$tr->id}}">
+                    {{($tr->title)}}
+                    @endforeach
 
                 </option>
-                @endforeach
 
         </select>
         <div class="row">
             <div class="col-4">
                 <br><input class="form-control" type="text" name="transport_name" placeholder="Назва транспорту">
-                <br><input class="form-control" type="text" name="transport_type" placeholder="Тип транспорту">
+                <br>
+                <h4>Тип транспорту</h4>
+                {{--                {{dd($transports->transportType->all())}}--}}
+                <select class="custom-select" name="type_id" id="inputGroupSelect01">
+
+                    @foreach($transports->transportType->all()  as $types)
+                        <option name="type_id" value="{{$types->id}}">
+                            {{--                                        {{($transports->courses->title)}}--}}
+                            {{$types->transport_type}}
+
+                        </option>
+                    @endforeach
+
+                </select>
             </div>
             <div class="col-4">
             </div>

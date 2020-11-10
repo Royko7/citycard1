@@ -14,11 +14,11 @@ class TransportController extends Controller
      */
     public function index()
     {
-        $transport = Transport::all();
-        foreach ($transport as $transports)
-        dd($transports->getCourse->title);
-
-//        return view('transport.index', compact('transport'));
+        $transport = Transport::get();
+//        foreach ($transport as $transports){
+//        dd($transports->getTransType->transport_type);
+//        }
+        return view('transport.index', compact('transport'));
 
     }
 
@@ -42,18 +42,9 @@ class TransportController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'transport_name' => 'required',
-            'transport_type' => 'required'
-        ]);
-//        $transport = new Transport([
-//            'transport_name' => $request->get('transport_name'),
-//            'transport_type' => $request->get('transport_type'),
-//            'course_id' => $request->get('course_id')
-//        ]);
+
         $region = Transport::create($request->all());
 
-//        $transport->save();
         return redirect()->route('transport.index')->with('success', 'Транспорт створено!');
     }
 

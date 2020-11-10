@@ -61,7 +61,7 @@
                     @endforeach
 
                 </select>
-                <h5>     Тип маршруту</h5>
+                <h5> Тип маршруту</h5>
 {{--                {{dd($course_type)}}--}}
 
                 {{--                {{dd($types)}}--}}

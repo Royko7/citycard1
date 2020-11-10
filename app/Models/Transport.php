@@ -9,8 +9,8 @@ class Transport extends Model
     protected $table = 'transports';
     protected $fillable = [
         'transport_name',
-        'transport_type',
-        'course_id'
+        'course_id',
+        'type_id'
     ];
 
     public function courses()
@@ -18,21 +18,16 @@ class Transport extends Model
         return $this->belongsTo('App\Models\Course', 'course_id');
     }
 
-    public function getCourse()
+
+    public function transportType()
     {
-        return $this->courses();
+        return $this->belongsTo('App\Models\TransportType', 'type_id');
     }
 
 
-//    public function city()
-//    {
-//        $city = City::all();
-//        foreach ($city as $cities)
-//        {
-//
-//        }
-//            return $this->city();
-//    }
-
+    public function getTransType()
+    {
+        return $this->transportType();
+    }
 
 }

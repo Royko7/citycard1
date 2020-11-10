@@ -6,6 +6,7 @@
         <a class="p-2 text-dark" href="{{url('/admin')}}"> Admin</a>
         <a class="p-2 text-dark" href="{{route('region.index')}}"> Область</a>
         <a class="p-2 text-dark" href="{{route('city.index')}}"> Місто</a>
+        <a class="p-2 text-dark" href="{{route('ticket.index')}}"> Білет</a>
     </nav>
     <span class="btn btn-outline-primary mr-2>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -57,7 +58,7 @@
             </th>
             <td>{{$transports->transport_name ?? ''}}</td>
             <td>{{$transports->courses->title ?? ''}}</td>
-            <td>{{$transports->transport_type ?? ''}}</td>
+            <td>{{$transports->transportType->transport_type}}</td>
 
             <td>
                 <a type="button" class="btn btn-primary" href="{{route('transport.edit',$transports)}}
@@ -75,6 +76,7 @@
 
             </td>
             @endforeach
+{{--            {{dd($transports->tickets)}}--}}
 
         </tr>
 {{--        {{dd($transports->city->id)}}--}}

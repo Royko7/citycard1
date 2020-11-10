@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\Role;
 use App\User;
-use App\Models\Permission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;

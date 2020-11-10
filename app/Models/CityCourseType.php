@@ -14,7 +14,16 @@ class CityCourseType extends Model
 
     public function course()
     {
-        return $this->belongsTo('App\Models\Course','type_id');
+        return $this->hasOne('App\Models\Course', 'type_id');
     }
 
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class, 'course_id');
+    }
+    public function price()
+    {
+        $this->hasMany(Price::class, 'ticket_id');
+
+    }
 }

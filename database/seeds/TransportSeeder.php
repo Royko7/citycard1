@@ -13,9 +13,9 @@ class TransportSeeder extends Seeder
     public function run()
     {
         DB::table('transports')->insert([
-            'transport_name' => 'Автобув 1',
-            'transport_type' => 'автобус',
-            'course_id' => 1
+            'transport_name' => 'Автобуc 22 ',
+            'type_id' => 1,
+            'course_id' => 1,
         ]);
     }
 }

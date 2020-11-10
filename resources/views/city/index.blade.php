@@ -7,6 +7,7 @@
         <a class="p-2 text-dark" href="{{route('region.index')}}"> Область</a>
         <a class="p-2 text-dark" href="{{route('course.index')}}"> Маршрут</a>
         <a class="p-2 text-dark" href="{{route('transport.index')}}"> Транспорт</a>
+        <a class="p-2 text-dark" href="{{route('ticket.index')}}"> Білет</a>
 
     </nav>
     <span class="btn btn-outline-primary mr-2>

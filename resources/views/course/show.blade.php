@@ -36,58 +36,60 @@
             <a class="btn btn-secondary" href="{{route('course.index' )}}"> << до списоку</a>
             <a class="btn btn-warning" href="{{route('city.show',$course->cities)}}"> до міста</a>
         </div>
-{{--        <h2>{{$cities->city_name}} - маршрути</h2>--}}
+        {{--        <h2>{{$cities->city_name}} - маршрути</h2>--}}
         <div class="col-3">
             <a class="btn btn-success" href="{{route('course.edit',$course)}}"> Редагувати маршрут</a>
         </div>
         <h2>{{$course->cities->city_name}}</h2>
     </div>
-{{--    {{dd($course)}}--}}
+    {{--    {{dd($course)}}--}}
+    {{--@foreach($course->cities)--}}
+    {{--        {{dd($course->cities)}}--}}
     <table class="table table-bordered">
-{{--@foreach($course->cities)--}}
-{{--        {{dd($course->cities)}}--}}
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Початок</th>
-                <th scope="col">Зупинки</th>
-                <th scope="col">Кінцева</th>
-            </tr>
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Початок</th>
+            <th scope="col">Зупинки</th>
+            <th scope="col">Кінцева</th>
+            <th scope="col">Тип маршруту</th>
+        </tr>
 
-            </thead>
-            <tbody>
-            @foreach($course as $courses)
-            @endforeach
-                    <tr>
-                        <th scope="row">
-                            {{$course->id}}
-                        </th>
-                        <th scope="row">
-                            {{$course->start_course}}
-                        </th>
-                        <th scope="row">
+        </thead>
+        <tbody>
+        @foreach($course as $courses)
+        @endforeach
+        <tr>
+            <th scope="row">
+                {{$course->id}}
+            </th>
+            <th scope="row">
+                {{$course->start_course}}
+            </th>
 
-                            @foreach($course->stops as $course_stops)
-                            <b>{{$course_stops->stops_name}} </b>
-                                <br>
-                            @endforeach
+            <th scope="row">
 
-                            <div class="row">
-                            </div>
-                            <br>
-                            <a class="btn btn-primary" href="{{route('stop.create')}}">Додати зупинку</a>
+                @foreach($course->stops as $course_stops)
+                    <b>{{$course_stops->stops_name}} </b>
+                    <br>
+                @endforeach
 
-                        </th>
-                        <td>
-                            {{$course->end_course}}
-{{--                            @endif--}}
-{{--                            <a type="button" class="btn btn-primary" href="{{route('course.edit',$courses->id)}}--}}
-{{--                                ">Оновити маршрут</a>--}}
-                        </td>
-                    </tr>
-            </tbody>
+                <div class="row">
+                </div>
+                <br>
+                <a class="btn btn-primary" href="{{route('stop.create')}}">Додати зупинку</a>
 
-        </table>
+            </th>
+            <td>
+                {{$course->end_course}}
+            </td>
+            <td>
+                {{$course->courseType->course_type}}
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
 
 </div>

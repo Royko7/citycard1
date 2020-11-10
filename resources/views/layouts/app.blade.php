@@ -34,13 +34,11 @@
 
 
             <div class="container">
-{{--                <div class="row">--}}
-{{--                    <div class="col-8">--}}
-                        @yield('content')
-
-{{--                    </div>--}}
-{{--                </div>--}}
-            </div>
+{{--
+{{--                        @yield('content')--}}
+                <р2>фывфыввфы</р2>
+{{--
+{{--            </div>--}}
 
         </main>
 <div class="footer  ml-5 pr-4">
