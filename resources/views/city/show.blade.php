@@ -78,7 +78,12 @@
                     <td>
                         {{$course->end_course}}
                         <br>
-                        <a type="button" class="btn btn-primary" href="{{route('course.edit',$course->id)}}
+
+                        <hr>
+
+                        <a type="button" class="btn btn-primary" href="{{route('course.show',$course->id)}}
+                            ">Детальніше</a>
+                        <a type="button" class="btn btn-info" href="{{route('course.edit',$course->id)}}
                             ">Оновити маршрут</a>
                     </td>
                 </tr>

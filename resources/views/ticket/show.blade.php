@@ -29,43 +29,12 @@
 
     <div class="row">
         <div class="col-3">
-            <a class="btn btn-secondary" href="{{route('course.index' )}}"> << до списоку</a>
+            <a class="btn btn-secondary" href="{{route('ticket.index',$ticket->id )}}"> << до списоку</a>
         </div>
         <div class="col-3">
+            sdasdasdsa
         </div>
     </div>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Початок</th>
-                <th scope="col">Зупинки</th>
-                <th scope="col">Кінцева</th>
-            </tr>
 
-            </thead>
-            <tbody>
-{{--            @foreach($course = \App\Models\Course::all() as $courses)--}}
-                    <tr>
-                        <th scope="row">
-{{--                            {{$courses->id}}--}}
-                        </th>
-                        <th scope="row">
-{{--                            {{$courses->start_course}}--}}
-                        </th>
-                        <th scope="row">
-                            <a href="#">1 зупинка</a>
-                            <div class="row">
-                            </div>
-                            <br>
-                            <a class="btn btn-primary" href="">Додати зупинку</a>
-                        </th>
-                        <td>
-                        </td>
-                    </tr>
-            </tbody>
-{{--            @endforeach--}}
-
-        </table>
 
 </div>

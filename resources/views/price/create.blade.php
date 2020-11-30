@@ -39,9 +39,9 @@
         <div class="row">
 
             <div class="col-3">
-                <select class="custom-select" name="course_id" id="inputGroupSelect01">
+                <select class="custom-select" name="course_type_id" id="inputGroupSelect01">
                     @foreach($prices->courseType->get() as $course_type)
-                        <option name="course_id" value="{{$course_type->id}}">
+                        <option name="course_type_id" value="{{$course_type->id}}">
                             {{$course_type->course_type}}
                             @endforeach
                         </option>
@@ -64,6 +64,22 @@
                             @endforeach
                         </option>
                 </select>
+            </div>
+            <div class="col-3">
+                <select class="custom-select" name="course_id" id="inputGroupSelect01">
+                    <option value="">
+                        Маршрут
+
+                    </option>
+                    @foreach($prices->course->get() as $courses)
+
+                        <option name="course_id" value="{{$courses->id}}">
+                            {{$courses->title}}
+                            @endforeach
+                        </option>
+                </select>
+
+                {{--                {{dd($courses)}}--}}
             </div>
         </div>
         <div class="row">

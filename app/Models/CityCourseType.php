@@ -19,7 +19,7 @@ class CityCourseType extends Model
 
     public function ticket()
     {
-        return $this->hasMany(Ticket::class, 'course_id');
+        return $this->hasMany(Ticket::class, 'course_type_id');
     }
     public function price()
     {

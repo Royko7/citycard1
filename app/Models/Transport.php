@@ -25,7 +25,7 @@ class Transport extends Model
     }
 
 
-    public function getTransType()
+    public function getTypeNameAttribute()
     {
         return $this->transportType();
     }

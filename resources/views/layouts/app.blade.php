@@ -22,29 +22,39 @@
     <title>@yield('title-block')</title>
 </head>
 <body>
-@auth()
-    @include('inc.header_logined')
+<div id='app'>
 
-@endauth
-@guest()
-    @include('inc.header')
+    @auth()
+        @include('inc.header_logined')
 
-@endguest
-        <main class="py-4">
+    @endauth
+    @guest()
+        @include('inc.header')
+
+    @endguest
+    <main class="py-4">
+
+        {{--            --}}
 
 
-            <div class="container">
-{{--
-{{--                        @yield('content')--}}
-                <р2>фывфыввфы</р2>
-{{--
-{{--            </div>--}}
+        <div id="app" class="container">
+            <div class="row justify-content-center">
+                <h2>Новини</h2>
+                <br>
+            </div>
+            <br>
+{{--            <hr>--}}
+            @yield('news')
 
-        </main>
-<div class="footer  ml-5 pr-4">
-    @include('inc.footer')
+            @yield('content')
+        </div>
+
+    </main>
+    <div class="footer  ml-5 pr-4">
+        @include('inc.footer')
+
+    </div>
 
 </div>
-{{--    </div>--}}
 </body>
 </html>

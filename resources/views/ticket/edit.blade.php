@@ -25,21 +25,59 @@
     </div><br/>
 @endif
 <div class="container">
-    <h2>Редагувати  транспорт</h2>
+    <h2>Редагувати  білет</h2>
     <br>
-    <form method="post" action="{{ route('transport.update',$transport->id) }}">
+    @foreach($ticket->all()  as $tickets )
+
+    @endforeach
+{{--    {{dd($tickets)}}--}}
+
+    <form method="post" action="{{ route('ticket.update',$ticket->id) }}">
         @method('PATCH')
         @csrf
-        <div class="col-4">
-            <input class="form-control" type="text" name="transport_name" placeholder="Назва транспорту">
-            <br>
-            <input class="form-control" type="text" name="transport_type" placeholder="Тип транспорту">
-        </div>
-        <br>
-        <div class="col-4">
-            <br>
-            <button type="submit" class="btn btn-primary">Оновити</button>
-        </div>
-        <br>
-    </form>
+                @csrf
+                <div class="row">
+                    <div class="col-3">
+                        <select class="custom-select" name="course_id" id="inputGroupSelect01">
+                            @foreach($tickets->courseType->get()  as $course_type)
+                                <option name="course_id" value="{{$course_type->id  }}">
+                                    {{$course_type->course_type}}
+                                    @endforeach
+                                </option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select class="custom-select" name="transport_id" id="inputGroupSelect01">
+                            @foreach($tickets->transportType->get() as $transport_type )
+                                <option name="transport_id" value="{{$transport_type->id}}">
+                                    {{($transport_type->transport_type)}}
+                                    @endforeach
+                                </option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select class="custom-select" name="ticket_id" id="inputGroupSelect01">
+                            <option value="">
+                                Тип былету
+                            </option>
+                            @foreach($tickets->ticketType->get() as $ticket_type)
+
+                                <option name="course_id" value="{{$ticket_type->id}}">
+                                    {{$ticket_type->ticket_type}}
+                                    @endforeach
+                                </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <br><input class="form-control" type="text" name="tick_name" placeholder="Назва білету">
+                        <br>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Оновити</button>
+
+            </form>
 </div>

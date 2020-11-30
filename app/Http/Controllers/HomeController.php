@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\News;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -27,7 +28,6 @@ class HomeController extends Controller
     public function index()
 
     {
-//        $cards = Card::all();
         $cards = Card::all();
 
         return view('home', compact('cards'));
@@ -37,7 +37,13 @@ class HomeController extends Controller
     {
         $num = Card::find(1);
         dd($num->id);
-        return view('home',compact('num'));
+        return view('home', compact('num'));
+    }
+
+    public function news()
+    {
+        $new = News::all();
+        return view('main',compact('new'));
     }
 
 }

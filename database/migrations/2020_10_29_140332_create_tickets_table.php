@@ -17,9 +17,10 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->string('tick_name');
             $table->integer('transport_id');
+            $table->integer('course_type_id');
             $table->integer('course_id');
             $table->integer('ticket_id');
-            $table->integer('price_id')->default(1);
+            $table->integer('price_id');
 
 
             $table->timestamps();

@@ -18,6 +18,7 @@ class CreatePricesTable extends Migration
             $table->string('price');
             $table->integer('transport_id');
             $table->integer('course_id');
+            $table->integer('course_type_id');
             $table->integer('ticket_id');
 
             $table->timestamps();

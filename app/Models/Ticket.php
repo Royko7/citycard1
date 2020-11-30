@@ -10,10 +10,15 @@ class Ticket extends Model
     protected $fillable = [
         'tick_name',
         'transport_id',
+        'course_type_id',
         'course_id',
         'ticket_id',
 //        'price_id'
     ];
+    protected $attributes = [
+        'price_id' => 1
+
+        ];
 
     public function transportType()
     {
@@ -34,13 +39,21 @@ class Ticket extends Model
 
     public function courseType()
     {
-        return $this->belongsTo(CityCourseType::class, 'transport_id');
+        return $this->belongsTo(CityCourseType::class, 'course_type_id');
 
     }
 
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id');
+
+    }
+
+
+
     public function price()
     {
-        return $this->belongsTo(Price::class);
+        return $this->belongsTo(Price::class, 'price_id');
     }
 
     public function getTransportId()
@@ -50,7 +63,7 @@ class Ticket extends Model
 
     public function getCourseId()
     {
-        return $this->course_id;
+        return $this->course_type_id;
     }
 
     public function getTicketId()

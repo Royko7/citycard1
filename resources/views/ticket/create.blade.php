@@ -26,7 +26,7 @@
     </div><br/>
 @endif
 
-@foreach($ticket as $tickets)
+@foreach($ticket ?? '' as $tickets )
 
 @endforeach
 <div class="container">
@@ -37,9 +37,13 @@
         <div class="row">
 
             <div class="col-3">
-                <select class="custom-select" name="course_id" id="inputGroupSelect01">
+                <select class="custom-select" name="course_type_id" id="inputGroupSelect01">
+                    <option value="">
+                        Тип маршруту
+
+                    </option>
                     @foreach($tickets->courseType->get() as $course_type)
-                        <option name="course_id" value="{{$course_type->id}}">
+                        <option name="course_type_id" value="{{$course_type->id }}">
                             {{$course_type->course_type}}
                             @endforeach
                         </option>
@@ -47,6 +51,10 @@
             </div>
             <div class="col-3">
                 <select class="custom-select" name="transport_id" id="inputGroupSelect01">
+                    <option value="">
+                        Тип транспорту
+
+                    </option>
                     @foreach($tickets->transportType->get() as $transport_type )
                         <option name="transport_id" value="{{$transport_type->id}}">
                             {{($transport_type->transport_type)}}
@@ -57,7 +65,7 @@
             <div class="col-3">
                 <select class="custom-select" name="ticket_id" id="inputGroupSelect01">
                     <option value="">
-                        Тип былету
+                        Тип білету
 
                     </option>
                     @foreach($tickets->ticketType->get() as $ticket_type)
@@ -67,6 +75,25 @@
                             @endforeach
                         </option>
                 </select>
+            </div>
+            {{--            {{dd($tickets->course )}}--}}
+
+
+            <div class="col-3">
+                <select class="custom-select" name="course_id" id="inputGroupSelect01">
+                    <option value="">
+                        Маршрут
+
+                    </option>
+                    @foreach($tickets->course->get() as $courses)
+
+                        <option name="course_id" value="{{$courses->id}}">
+                            {{$courses->title}}
+                            @endforeach
+                        </option>
+                </select>
+
+                {{--                {{dd($courses)}}--}}
             </div>
         </div>
         <div class="row">
@@ -80,35 +107,20 @@
 
             {{--{{dd($tickets->price)}}--}}
         </div>
-        айди билета
-        {{$tickets->id}}
-        <br>
-        айди типа билета
 
-        {{$tickets->ticketType->id}}
-        <br>
-        айди цены
-        {{$tickets->getPriceId()}}
-        <br>
-        айди маршрута
-        {{$tickets->courseType->id}}
-        <br>
-        айди транспорта
-        {{$id_tran = $tickets->transportType->id}}
-{{--        @foreach($tickets->getPrice->get() as $price)--}}
+        {{--        @foreach($tickets->getPrice->get() as $price)--}}
 
-{{--            @if( $tickets->transportType->id == 1 &&--}}
-{{--                $tickets->courseType->id == 1 && $tickets->ticketType->id == 1 )--}}
-{{--            @if( $tickets->transportType->id == $price->transport_id && $tickets->courseType->id == $price->course_id && $tickets->ticketType->id == $price->ticket_id )--}}
-{{--                <input class="form-control" type="hidden" name="price_id" value="{{$price->getPrice->get() }}"--}}
-{{--                                placeholder="Назва білету">--}}
-{{--            @endif--}}
-{{--        @endforeach--}}
+        {{--            @if( $tickets->transportType->id == 1 &&--}}
+        {{--                $tickets->courseType->id == 1 && $tickets->ticketType->id == 1 )--}}
+        {{--            @if( $tickets->transportType->id == $price->transport_id && $tickets->courseType->id == $price->course_id && $tickets->ticketType->id == $price->ticket_id )--}}
+        {{--                <input class="form-control" type="hidden" name="price_id" value="{{$price->getPrice->get() }}"--}}
+        {{--                                placeholder="Назва білету">--}}
+        {{--            @endif--}}
+        {{--        @endforeach--}}
 
-{{--{{dump($price->ticketType->where('id',1))}}--}}
+        {{--{{dump($price->ticketType->where('id',1))}}--}}
 
 
-{{--@em--}}
 
 
         {{-- @if()--}}

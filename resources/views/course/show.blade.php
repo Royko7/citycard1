@@ -49,6 +49,7 @@
         <thead>
         <tr>
             <th scope="col">id</th>
+            <th scope="col">Назва</th>
             <th scope="col">Початок</th>
             <th scope="col">Зупинки</th>
             <th scope="col">Кінцева</th>
@@ -59,14 +60,18 @@
         <tbody>
         @foreach($course as $courses)
         @endforeach
+
         <tr>
             <th scope="row">
                 {{$course->id}}
             </th>
             <th scope="row">
-                {{$course->start_course}}
+                {{$course->title}}
             </th>
 
+            <th scope="row">
+                {{$course->start_course}}
+            </th>
             <th scope="row">
 
                 @foreach($course->stops as $course_stops)
@@ -91,5 +96,110 @@
         </tbody>
 
     </table>
+
+
+    <table class="table table-bordered">
+        {{--        <a href="">dasdas</a>--}}
+        {{--        {{dd($course->ticket)}}--}}
+        <thead>
+        <div class="row">
+            <div class="col-12">
+                <h2>Транспорт</h2>
+
+                <a class="btn btn-dark" href="{{route('transport.create')}}">Створити транспорт</a>
+            </div>
+            <br>
+        </div>
+        <br>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Назва транспорту</th>
+            <th scope="col">Тип транспорту</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+            @foreach($course->transports as $item)
+
+                <th scope="row">
+                    {{$item->id}}
+                </th>
+                <th scope="row">
+                    {{$item->transport_name}}
+
+                </th>
+
+                <th scope="row">
+                    @foreach($course->TransType as $type)
+                        @if($type->id == $item->type_id  )
+                            {{$type->transport_type }}
+
+                        @endif
+                    @endforeach
+
+                    {{--                    {{$type->id }}--}}
+                    {{--                    {{$type->transport_type }}--}}
+                </th>
+        </tr>
+        </tbody>
+
+        @endforeach
+        <table class="table table-bordered">
+            {{--        <a href="">dasdas</a>--}}
+            <thead>
+            <div class="row">
+                <div class="col-12">
+                    <h2>Білети</h2>
+                    <hr>
+                    {{--                    <a class="btn btn-dark" href="{{route('transport.create')}}">Створити транспорт</a>--}}
+                </div>
+                <br>
+            </div>
+            <br>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Назва білету</th>
+                <th scope="col">Ціна</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                @foreach($course->ticket as $tickets)
+
+                    <th scope="row">
+                        {{$tickets->id}}
+                    </th>
+                    <th scope="row">
+                        {{$tickets->tick_name}}
+
+                    </th>
+
+                    <th scope="row">
+                        {{--                                                {{dd($tickets->price)}}--}}
+                        @foreach($tickets->price->get() as $price)
+                        @endforeach
+
+                            @if($tickets->course_id == $price->course_id && $tickets->course_type_id == $price->course_type_id && $tickets->ticket_id == $price->ticket_id )
+
+                                {{$price->price}}
+                            @else
+
+                                <a href="{{route('price.create')}}">Задати ціну</a>
+                            @endif
+
+                        {{--{{$price}}--}}
+                        {{--                    {{$type->id }}--}}
+                        {{--                    {{$type->transport_type }}--}}
+                    </th>
+            </tr>
+            </tbody>
+
+            @endforeach
+
+        </table>
+    </table>
+
 
 </div>

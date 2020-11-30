@@ -57,6 +57,8 @@
             <th scope="col">Тип білету</th>
 
             <th scope="col">Ціна</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -67,11 +69,14 @@
                 {{--            @endforeach--}}
 
                 <th scope="row">{{$tickets->id}}</th>
-                <td>{{$tickets->courseType->course_type}} -- {{$tickets->getCourseId()}}</td>
-                <td>{{$tickets->transportType->transport_type}} -- {{$tickets->getTransportId()}}</td>
+                <td>{{$tickets->courseType->course_type}}  </td>
+                <td>{{$tickets->transportType->transport_type}} </td>
 
-                <td>{{$tickets->ticketType->ticket_type}}-- {{$tickets->getTicketId()}} </td>
+                <td>{{$tickets->ticketType->ticket_type}} </td>
+
                 <td>
+
+{{--                    {{dd($tickets->price)}}--}}
                     @foreach($tickets->getPrice->all() as $price)
                         {{--      @if( $tickets->transportType->id == $price->transport_id && $tickets->courseType->id--}}
                         {{--            == $price->course_id && $tickets->ticketType->id == $price->ticket_id )--}}
@@ -83,13 +88,24 @@
 
                         @if($all_price->ticket_id ==  $tickets->getTicketId() && $all_price->transport_id ==  $tickets->getTransportId() )
                             {{$all_price->price}} Грн
-                            {{--                        @elseif($all_price->transport_id ==  $tickets->getTransportId())--}}
-                            {{--                                {{$all_price->price}} Грн--}}
-                            {{--                            @elseif($all_price->course_id ==  $tickets->getcourseId())--}}
-                            {{--                                {{$all_price->price}} Грн--}}
-
+                            @else()
+                                {{false}}
                         @endif
+
                     @endforeach
+
+                </td>
+                <td>
+                    <form action="{{ route('ticket.destroy', $tickets->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Видалити білет</button>
+                    </form>
+                </td>
+                <td>
+                    <a href="{{route('ticket.edit',$tickets->id)}}" class ="btn btn-dark">Оновивти </a>
+
+                    <a href="{{route('ticket.show',$tickets->id)}}" class ="btn btn-info">Переглянути</a>
 
                 </td>
         </tr>
@@ -99,9 +115,5 @@
 
     {{--    <a type="button" class="btn btn-primary" href="{{route('ticket.edit',$ticket)}}--}}
     {{--        ">Оновити транспорт</a>--}}
-    {{--    <form action="{{ route('ticket.destroy', $ticket) }}" method="post">--}}
-    {{--        @csrf--}}
-    {{--        @method('DELETE')--}}
-    {{--        <button class="btn btn-danger" type="submit">Видалити маршрут</button>--}}
-    {{--    </form>--}}
+
 </div>

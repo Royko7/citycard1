@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Card;
 use App\Models\City;
+use App\Models\News;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -56,7 +57,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Cabinet');
     }
 
-
+    public function news()
+    {
+        return $this->hasMany(News::class,'user_id');
+    }
 
 //    public  function getUserCard()
 //    {

@@ -55,11 +55,8 @@
                     @foreach($course_type = App\Models\CityCourseType::all() as $types)
                         <option name="type_id" value="{{$types->id}}">
                             {{$types->course_type}}
-
-
                         </option>
                     @endforeach
-
                 </select>
                 <h5> Тип маршруту</h5>
 {{--                {{dd($course_type)}}--}}

@@ -51,8 +51,9 @@ class TicketController extends Controller
      * @param \App\Ticket $ticket
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function show(Ticket $ticket)
+    public function show($id)
     {
+        $ticket = Ticket::findOrFail($id)->get();
         return view('ticket.show', compact('ticket'));
     }
 
@@ -62,10 +63,10 @@ class TicketController extends Controller
      * @param \App\Ticket $ticket
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit()
+    public function edit($id)
     {
-        $ticket = Ticket::findOrFail(id);
-        return view('ticket.edit');
+        $ticket = Ticket::findOrFail($id);
+        return view('ticket.edit',compact('ticket'));
     }
 
     /**
@@ -78,8 +79,10 @@ class TicketController extends Controller
     public function update(Request $request, $id)
     {
         $ticket = Ticket::findOrFail($id);
-        $ticket->tick_name = $request->get('tick_name');
-        $ticket->update();
+//        $ticket->tick_name = $request->get('tick_name');
+//        $ticket = Ticket::create($request->all());
+
+        $ticket->update($request->all());
         return redirect()->route('ticket.index');
     }
 

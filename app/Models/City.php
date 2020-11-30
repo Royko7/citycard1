@@ -27,6 +27,7 @@ class City extends Model
 
     }
 
+
 //    public function getCourse()
 //    {
 //        $city = Course::all();

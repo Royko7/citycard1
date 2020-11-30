@@ -35,8 +35,30 @@ class Course extends Model
         return $this->belongsTo('App\Models\CityCourseType', 'type_id');
     }
 
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class, 'course_id');
+
+    }
+    public function price()
+    {
+        return $this->hasMany(Price::class, 'course_id');
+
+    }
 
 
+    public function getTransTypeAttribute()
+    {
+
+        $some = TransportType::all();
+        return $some;
+    }
+
+    public function getPriceAttribute()
+    {
+        $price = Price::all();
+        return $price;
+    }
 
 }
 

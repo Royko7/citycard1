@@ -11,6 +11,7 @@ class Price extends Model
         'price',
         'transport_id',
         'course_id',
+        'course_type_id',
         'ticket_id'
     ];
 
@@ -22,19 +23,23 @@ class Price extends Model
 
     public function ticketType()
     {
-        return $this->belongsTo(TicketType::class, 'transport_id');
+        return $this->belongsTo(TicketType::class, 'ticket_id');
 
     }
 
     public function courseType()
     {
-        return $this->belongsTo(CityCourseType::class, 'transport_id');
+        return $this->belongsTo(CityCourseType::class, 'course_type_id');
 
     }
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id');
 
+    }
     public function ticket()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(Ticket::class,'price_id');
     }
 
     public function getPrice()

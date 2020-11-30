@@ -26,7 +26,7 @@
     <h5 class="my-0 mr-md-auto font-weight-normal ml-4">City Card</h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark mr-4" href="/">Головна</a>
-{{--        <a class="p-2 text-dark" href="{{route('routes.index')}}"> Блог</a>--}}
+        <a class="p-2 text-dark" href="{{route('new.index')}}"> Новини</a>
         <a class="p-2 text-dark" href="{{route('region.index')}}"> Область</a>
         <a class="p-2 text-dark" href="{{route('city.index')}}"> Місто</a>
         <a class="p-2 text-dark" href="{{route('course.index')}}"> Маршрут</a>
